@@ -26,6 +26,26 @@ class LinkedList {
 //     return the particular linkedList named myLinkedList
         return this
     }
+
+    pop() {
+        // O(n) operation. Must iterate through 
+        // edge case if it's an empty list
+        if (!this.head) return undefined
+        let temp = this.head
+        let pre = this.head
+        while (temp.next) {
+            pre = temp
+            temp = temp.next
+        }
+        this.tail = pre
+        this.tail.next = null
+        this.length--
+        if (this.length === 0) {
+            this.head = null
+            this.tail = null
+        }
+        return temp
+    }
 }
 
 let myLinkedList = new LinkedList(7)
