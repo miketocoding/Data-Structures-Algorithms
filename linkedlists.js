@@ -47,8 +47,9 @@ class LinkedList {
         return temp
     }
 
-    // unshift
+    // unshift - adding a new node to the head
     unshift(value) {
+        // Object(1) because we only need to add the inital node and not go through entire list
         const newNode = new Node(value)
         if (!this.head) {
             this.head = newNode
@@ -59,6 +60,20 @@ class LinkedList {
         }
         this.length++
         return this
+    }
+
+    // shift - removing the head node
+    shift() {
+        // if list is empty then return undefined
+        if (!this.head) return undefined
+        let temp = this.head
+        this.head = this.head.next
+        temp.next = null
+        this.length--
+        if (this.length === 0) {
+            this.tail = null
+        }
+        return temp
     }
 }
 
