@@ -87,6 +87,22 @@ class LinkedList {
         }
         return temp
     }
+
+    // Set - set the value at a certain index
+    set(index, value) {
+        // use get() and pass it the index
+        let temp = this.get(index)
+        // is temp undefined or is it pointing to a node
+        if (temp) {
+            // temp.value is set as the value we input
+            temp.value = value
+            // need a return statement to stop the if statement
+            return true
+        }
+        // else return false
+        return false
+    }
+    
 }
 
 let myLinkedList = new LinkedList(7)
