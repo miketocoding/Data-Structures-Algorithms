@@ -137,6 +137,33 @@ class LinkedList {
         this.length--
         return temp
     }
+
+    // reverse - reverse a linked list
+    reverse() {
+        // don't need this??
+        // if no list return undefined
+        // if (!this.head) return undefined
+        // if list has one node, return the node
+        // if (this.length === 1) return this
+
+        // switch head and tail, then reverse the .next
+        let temp = this.head
+        this.head = this.tail
+        this.tail = temp
+
+        // variables to keep track of prev and next
+        let next = this.temp
+        let prev = null
+
+        // for loop to iterate through list
+        for (let i = 0; i < this.length; i++) {
+            next = temp.next
+            temp.next = prev
+            prev = temp
+            temp = next
+        }
+        return this
+    }
 }
 
 let myLinkedList = new LinkedList(7)
