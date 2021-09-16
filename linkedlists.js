@@ -113,11 +113,29 @@ class LinkedList {
         if (index < 0 || index > length) return false
         const newNode = new Node(value)
         // want the node prior to the insertion point
-        let temp = this.get(index-1)
+        const temp = this.get(index-1)
         newNode.next = temp.next
         temp.next = newNode
         this.length++
         return true
+    }
+
+    // remove - remove an item from a particular index
+    remove(index) {
+        // if index is outside of range, return false
+        if (index < 0 || index >= this.length) return undefined
+        // if index position is the first node then return this.shift()
+        if (index === 0) return this.shift()
+        // if index position is last node then pop()
+        if (index === this.length - 1) return this.pop()
+        // Need variable that points to the node and a variable that points to previous node
+        const before = this.get(index-1)
+        const temp = before.next
+        // set 
+        before.next = temp.next
+        temp.next = null
+        this.length--
+        return temp
     }
 }
 
