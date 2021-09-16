@@ -49,7 +49,7 @@ class LinkedList {
 
     // unshift - adding a new node to the head
     unshift(value) {
-        // Object(1) because we only need to add the inital node and not go through entire list
+        // O(1) because we only need to add the inital node and not go through entire list
         const newNode = new Node(value)
         if (!this.head) {
             this.head = newNode
@@ -103,6 +103,22 @@ class LinkedList {
         return false
     }
     
+    // insert - inserts a value at a particular index
+    insert(index, value) {
+        // if we put value at beginning of linked list
+        if (index === 0) return this.unshift(value)
+        // if we put value at end of linked list
+        if (index === this.length) return this.push(value)
+        // if the index falls outside the linked list
+        if (index < 0 || index > length) return false
+        const newNode = new Node(value)
+        // want the node prior to the insertion point
+        let temp = this.get(index-1)
+        newNode.next = temp.next
+        temp.next = newNode
+        this.length++
+        return true
+    }
 }
 
 let myLinkedList = new LinkedList(7)
