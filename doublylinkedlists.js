@@ -86,6 +86,43 @@ class DoublyLinkedList {
         this.length++
         return this
     }
+
+    // shift - remove node from start of list
+    shift() {
+        // if no items in list
+        if (this.length === 0) return undefined
+        let temp = this.head
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = this.head.next
+            this.head.prev = null
+            temp.next = null
+        }
+        // decrement length
+        this.length--
+        return temp
+    }
+
+    // Get - get a node at a particular index
+    get(index) {
+        // if index is outside of range, return undefined
+        if (index < 0 || index >= this.length) return undefined
+        // loop through list
+        let temp = this.head
+        if (index < this.length/2) {
+            for (let i = 0; i < index; i++) {
+                temp = temp.next
+            }
+        } else {
+            temp = this.tail
+            for (let i = this.length-1; i > index; i--) {
+                temp = temp.prev
+            }
+        }
+        return temp
+    }
 }
 
 let myDoublyLinkedList = new DoublyLinkedList(7)
