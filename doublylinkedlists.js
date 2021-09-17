@@ -123,6 +123,62 @@ class DoublyLinkedList {
         }
         return temp
     }
+
+    // Set - set the value of a node at a certain index
+    set(index, value) {
+        // call get method to get the value of a certain index position
+        let temp = this.get(index)
+        // if temp is returned true
+        if (temp) {
+            // set the temp.value = provided value
+            temp.value = value
+            return true
+        }
+        return false
+    }
+
+    // insert - insert new node of a particular value at a specific index
+    insert(index, value) {
+        // if null or empty then call unshift method)
+        if (index === 0) return this.unshift(value)
+        // if index is at the end, push
+        if (index === this.length) return this.push(value)
+        // if index falls outside of range 
+        if (index < 0 || index > this.length) return false
+
+        // create new node
+        const newNode = new Node(value)
+        // create variables for before and after
+        const before = this.get(index-1)
+        // O(1) instead of O(n) using this.get(index)
+        const after = before.next
+
+        before.next = newNode
+        newNode.prev = before
+        newNode.next = after
+        after.prev = newNode
+        this.length++
+        return true
+    }
+
+    // remove - remove a node at a specified index
+    remove(index) {
+        // remove first item, use shift
+        if (index === 0) return this.shift()
+        // if remove last item, use pop
+        if (index === this.length-1) return this.pop()
+        // anything less than 0 or greater than length, return false
+        if (index < 0 || index >= this.length) return false
+
+        // create variable to get index
+        const temp = this.get(index)
+        temp.prev.next = temp.next
+        temp.next.prev = temp.prev
+        temp.next = null
+        temp.prev = null
+        this.length--
+        return temp
+    }
 }
 
 let myDoublyLinkedList = new DoublyLinkedList(7)
