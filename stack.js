@@ -6,6 +6,7 @@ class Node {
 }
 // LIFO - Last in first out
 // similar to linked list except we only need top
+// pushing and popping from a stack is O(1)
 class Stack {
     constructor(value) {
         const newNode = new Node(value)

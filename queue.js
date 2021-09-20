@@ -5,7 +5,7 @@ class Node {
     }
 }
 
-// FIFO - O(1)
+// FIFO - adding and removing from a queue is O(1)
 // Enqueue at last(tail) and dequeue at first(head)
 class Queue {
     constructor(value) {
@@ -27,6 +27,24 @@ class Queue {
         }
         this.length++
         return this
+    }
+
+    // dequeue - removing first item from the line (shift)
+    dequeue() {
+        // edge case: no item in list, return undefined
+        if (this.length === 0) return undefined
+
+        let temp = this.first
+        // edge case: 1 node in list
+        if (this.length === 1) {
+            this.first = null
+            this.last = null
+        } else {
+            this.first = this.first.next
+            temp.next = null
+        }
+        this.length--
+        return temp
     }
 }
 
