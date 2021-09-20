@@ -25,6 +25,23 @@ class Stack {
         this.length++
         return this
     }
+
+    // pop method
+    pop() {
+        // if empty return undefined
+        // if (!this.top) return undefined
+        if (this.length === 0) return undefined
+
+        let temp = this.top
+        // set top to equal the next node
+        this.top = this.top.next
+        // break temp off from rest of the stack
+        temp.next = null
+        // decrement the length
+        this.length--
+        // return what was popped
+        return temp
+    }
 }
 
 
