@@ -4,7 +4,7 @@ class Node {
         this.next = null
     }
 }
-
+// LIFO - Last in first out
 // similar to linked list except we only need top
 class Stack {
     constructor(value) {
@@ -46,3 +46,4 @@ class Stack {
 
 
 let myStack = new Stack(11)
+myStack
