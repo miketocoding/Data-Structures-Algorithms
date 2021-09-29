@@ -47,6 +47,28 @@ class BST {
             }
         }
     }
+    // contains method
+    contains(value) {
+        // if empty tree, return false
+        if (this.root === null) return false
+        // create variable to compare value to
+        let temp = this.root
+        // while temp is not equal to null
+        while (temp) {
+            // if value is less than temp.value
+            if (value < temp.value) {
+                // set temp to temp.left
+                temp = temp.left
+            } else if (value > temp.value) {
+                temp = temp.right
+            } else {
+                // if it's equal, return true
+                return true
+            }
+        }
+        // return false when temp equals to null
+        return false
+    }
 }
 
 let myTree = new BST()
@@ -54,6 +76,6 @@ myTree.insert(47)
 myTree.insert(21)
 myTree.insert(76)
 myTree.insert(18)
-
+myTree.insert(27)
 myTree.insert(52)
 myTree.insert(82)
