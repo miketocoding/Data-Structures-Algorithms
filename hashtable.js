@@ -19,6 +19,21 @@ class HashTable {
         // always be 0-6 if address space is 7
         return hash
     }
+
+    // set method - set an item
+    set(key, value) {
+        // 1. find index of where to store key value pair
+        // create a variable index to get a index for a key (run through hash function)
+        let index = this._hash(key)
+        // 2. If this is completely empty, then we can create empty array
+        if (!this.dataMap[index]) {
+            // build empty array to push key value pairs into
+            this.dataMap[index] = []
+        }
+        // 3. Now push key value pairs
+        this.dataMap[index].push([key, value])
+        return this
+    }
 }
 
 let myHashTable = new HashTable()
