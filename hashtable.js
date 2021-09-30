@@ -34,6 +34,24 @@ class HashTable {
         this.dataMap[index].push([key, value])
         return this
     }
+
+    // get method to get the value 
+    get (key) {
+        let index = this._hash(key)
+        // if there is something in the index
+        if (this.dataMap[index]) {
+            // loop through where i < length of arrays in array
+            for (let i = 0; i < this.dataMap[index].length; i++) {
+                // index is '4', i is first key value pair, 0 is first key in pair. If keys match
+                if (this.dataMap[index][i][0] === key) {
+                    // return the value of that key value pair
+                    return this.dataMap[index][i][1]
+                }
+            }
+        }
+        // if nothing there return undefined
+        return undefined
+    }
 }
 
 let myHashTable = new HashTable()
