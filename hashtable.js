@@ -42,15 +42,30 @@ class HashTable {
         if (this.dataMap[index]) {
             // loop through where i < length of arrays in array
             for (let i = 0; i < this.dataMap[index].length; i++) {
-                // index is '4', i is first key value pair, 0 is first key in pair. If keys match
+                // index is '4', i is first key value pair, 0 is first key in pair ('bolts'). If keys match
                 if (this.dataMap[index][i][0] === key) {
-                    // return the value of that key value pair
+                    // return the value of that key value pair (50)
                     return this.dataMap[index][i][1]
                 }
             }
         }
         // if nothing there return undefined
         return undefined
+    }
+
+    // keys method - return keys from key value pairs
+    keys() {
+        // return an array with key items
+        let allKeys = []
+        // need two for loops
+        for (let i = 0; i < this.dataMap.length; i++) {
+            if (this.dataMap[i]) {
+                for (let j = 0; j < this.dataMap[i].length; j++) {
+                    allKeys.push(this.dataMap[i][j][0])
+                }
+            }
+        }
+        return allKeys
     }
 }
 
