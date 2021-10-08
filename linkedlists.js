@@ -13,6 +13,7 @@ class LinkedList {
         this.length = 1
     }
     push(value) {
+        // Big O is O(n) since it has to iterate through the linkedlist
         const newNode = new Node(value)
         if (!this.head) {
             this.head = newNode

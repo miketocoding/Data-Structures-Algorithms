@@ -5,6 +5,7 @@ class HashTable {
     // tells other devs, this is a method only called by other methods
     // don't call this directly
     // pass it a key (from key value pair). Example 'paint'
+    // O(1) - constant time
     _hash(key) {
         // declare variable and set it to 0
         let hash = 0
@@ -36,6 +37,7 @@ class HashTable {
     }
 
     // get method to get the value 
+    // Generally O(1)
     get (key) {
         let index = this._hash(key)
         // if there is something in the index
@@ -59,8 +61,10 @@ class HashTable {
         let allKeys = []
         // need two for loops
         for (let i = 0; i < this.dataMap.length; i++) {
+            // if the index has values
             if (this.dataMap[i]) {
                 for (let j = 0; j < this.dataMap[i].length; j++) {
+                    // push items into allKeys array
                     allKeys.push(this.dataMap[i][j][0])
                 }
             }
